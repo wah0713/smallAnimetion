@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>按住鼠标试试拖拽效果</title>
+    <style>
+        ul {
+            width: 1000px;
+            height: 150px;
+            padding: 0;
+            list-style-type: none;
+            margin: 300px auto;
+            transition: all .5s linear;
+            transform-style: preserve-3d;
+            /* background-color: rgba(51, 77, 92, .5); */
+        }
+
+        li {
+            width: 20px;
+            height: 150px;
+            background-color: #d6dbde;
+            float: left;
+            transform-style: preserve-3d;
+            transform-origin: top;
+        }
+
+        @keyframes move {
+            from {}
+            12.5% {
+                transform: rotateX(45deg) skew(-15deg);
+            }
+            26% {
+                transform: rotateX(90deg) skew(-25deg);
+            }
+            /* 30% {
+                transform: rotateX(92deg) skew(-10deg);
+            } */
+            39.5% {
+                transform: rotateX(135deg) skew(-15deg);
+            }
+            52% {
+                transform: rotateX(180deg) skew(0deg);
+            }
+            64.5% {
+                transform: rotateX(225deg) skew(15deg);
+            }
+            77% {
+                transform: rotateX(270deg) skew(25deg);
+            }
+            89.5% {
+                transform: rotateX(315deg) skew(15deg);
+            }
+            95.5% {
+                transform: rotateX(336deg) skew(7deg);
+            }
+            100% {
+                transform: rotateX(360deg);
+            }
+        }
+
+        @keyframes biaoxing {
+            from {}
+            to {
+                transform: rotateX(360deg);
+            }
+        }
+
+        body {
+            background-color: #334d5c;
+        }
+    </style>
+</head>
+
+<body>
+    &nbsp;
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+<script>
+    var ul = document.getElementsByTagName('ul')[0];
+    var lilist = document.getElementsByTagName('li');
+    for (var i = 0; i < lilist.length; i++) {
+        lilist[i].style.animation = "move 3s " + 0.04 * i + "s infinite linear";
+    }
+    document.body.onmousedown = function () {
+        document.body.onmousemove = function (e) {
+            e=e||window.event;
+            e.preventDefault();
+            var x = e.pageX - ul.offsetLeft;
+            var y = e.pageY - ul.offsetTop;
+            var xdeg = -x * 0.2;
+            var ydeg = -y * 0.1;
+            document.getElementsByTagName('ul')[0].style.transform = "rotate(" + ydeg + "deg) rotateY(" + xdeg + "deg)";
+        }
+
+    }
+    document.body.onmouseup = function () {
+        document.body.onmousemove = function () {
+            return;
+        };
+    }
+
+</script>
+
+</html>
